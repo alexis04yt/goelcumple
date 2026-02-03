@@ -62,15 +62,25 @@ section{padding:100px 20px;}
 }
 
 /* GALERÍA */
-.swiper{width:100%;padding-bottom:50px;}
-.swiper-slide img{
-  width:100%;
-  height:350px;
-  object-fit:cover;
-  filter:grayscale(100%);
-  transition:.3s;
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  margin-top: 40px;
 }
-.swiper-slide img:hover{filter:grayscale(0%);}
+
+.image-grid img {
+  width: 100%;
+  height: 250px; /* Fixed height for consistency */
+  object-fit: cover; /* Cover the area, cropping if necessary */
+  border-radius: 8px; /* Slightly rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.image-grid img:hover {
+  transform: scale(1.03); /* Slightly enlarge on hover */
+}
 
 /* MODAL */
 #rsvpModal{

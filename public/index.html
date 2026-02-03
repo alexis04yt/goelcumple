@@ -8,7 +8,7 @@
 <!-- Google Fonts y estilos Swiper/AOS -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght @400;600&family=Montserrat:wght @300;400;600&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos @2.3.1/dist/aos.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper @11/swiper-bundle.min.css"/>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -82,15 +82,11 @@
   <div class="container">
     <h2 class="title">Galería</h2>
 
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/gallery/image1.jpeg"></div>
-        <div class="swiper-slide"><img src="images/gallery/image2.jpeg"></div>
-        <div class="swiper-slide"><img src="images/gallery/image3.jpeg"></div>
-        <div class="swiper-slide"><img src="images/gallery/image4.jpeg"></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+    <div class="image-grid">
+        <img src="images/gallery/image1.jpeg" alt="Imagen de la galería 1">
+        <img src="images/gallery/image2.jpeg" alt="Imagen de la galería 2">
+        <img src="images/gallery/image3.jpeg" alt="Imagen de la galería 3">
+        <img src="images/gallery/image4.jpeg" alt="Imagen de la galería 4">
     </div>
   </div>
 </section>
@@ -105,23 +101,7 @@
 AOS.init({duration:1000,once:true});
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper @11/swiper-bundle.min.js"></script>
-<script>
-new Swiper('.swiper',{
-  loop:true,
-  slidesPerView:3,
-  spaceBetween:20,
-  navigation:{
-    nextEl:'.swiper-button-next',
-    prevEl:'.swiper-button-prev'
-  },
-  breakpoints:{
-    0:{slidesPerView:1},
-    768:{slidesPerView:2},
-    1024:{slidesPerView:3}
-  }
-});
-</script>
+
 
 <script>
 // Modal y formulario de asistencia
