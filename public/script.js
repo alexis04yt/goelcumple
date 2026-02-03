@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'http://localhost:3000'; // Make sure this matches your server's port
+
 
     // Logic for index.html (form submission)
     const attendanceForm = document.getElementById('attendanceForm');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const response = await fetch(`${API_BASE_URL}/submit-data`, {
+                const response = await fetch(`/submit-data`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!dataTableBody) return; // Only run if on ver_datos.html
 
         try {
-            const response = await fetch(`${API_BASE_URL}/get-data`);
+            const response = await fetch(`/get-data`);
             const data = await response.json();
 
             dataTableBody.innerHTML = ''; // Clear existing rows
