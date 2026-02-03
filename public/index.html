@@ -1,35 +1,191 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmación de Asistencia</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celebración Especial</title>
+
+<!-- Google Fonts y estilos Swiper/AOS -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght @400;600&family=Montserrat:wght @300;400;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos @2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper @11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>Confirmación de Asistencia al Evento</h1>
-        <form id="attendanceForm">
-            <div class="form-group">
-                <label for="nombreFamilia">Nombre de la Familia:</label>
-                <input type="text" id="nombreFamilia" name="nombreFamilia" required>
-            </div>
-            <div class="form-group">
-                <label>¿Confirman asistencia?</label>
-                <div>
-                    <input type="radio" id="asisteSi" name="confirmacionAsistencia" value="Si" required>
-                    <label for="asisteSi">Sí</label>
-                </div>
-                <div>
-                    <input type="radio" id="asisteNo" name="confirmacionAsistencia" value="No">
-                    <label for="asisteNo">No</label>
-                </div>
-            </div>
-            <button type="submit">Enviar Confirmación</button>
-        </form>
-        <p id="message" style="margin-top: 20px;"></p>
-        <p><a href="ver_datos.html">Ver todas las confirmaciones</a></p>
+
+<!-- MODAL CONFIRMAR -->
+<div id="rsvpModal">
+  <div class="modal-content">
+    <h2 class="title">Confirmación de Asistencia</h2>
+    <p class="subtitle">Por favor, completa los datos para confirmar 💌</p>
+
+    <!-- FORMULARIO CON SOLO RADIO BUTTONS -->
+    <form id="attendanceForm">
+      <!-- Nombre de la familia -->
+      <div style="margin-bottom:15px; text-align:left;">
+        <label for="nombreFamilia">Nombre de la Familia:</label>
+        <input type="text" id="nombreFamilia" name="nombreFamilia" required>
+      </div>
+
+      <!-- Radio buttons alineados -->
+      <div style="margin-bottom:15px; text-align:left;">
+        <label>¿Confirman asistencia?</label>
+        <div style="display:flex; gap:20px; margin-top:5px;">
+          <label style="display:flex; align-items:center; gap:5px;">
+            <input type="radio" id="asisteSi" name="confirmacionAsistencia" value="Sí" required>
+            Sí
+          </label>
+          <label style="display:flex; align-items:center; gap:5px;">
+            <input type="radio" id="asisteNo" name="confirmacionAsistencia" value="No">
+            No
+          </label>
+        </div>
+      </div>
+
+      <button type="submit">Enviar Confirmación</button>
+    </form>
+
+    <p id="message" style="margin-top: 20px; font-weight:bold;"></p>
+    <p style="margin-top:10px;"><a href="ver_datos.html">Ver todas las confirmaciones</a></p>
+  </div>
+</div>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content" data-aos="fade-up">
+    <p>ESTÁS INVITADO</p>
+    <h1>Una Celebración Especial</h1>
+    <p>Una noche para recordar</p>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section>
+  <div class="container">
+    <h2 class="title" data-aos="fade-up">Sobre el Evento</h2>
+    <p class="subtitle" data-aos="fade-up">
+      Música, elegancia y momentos únicos para celebrar juntos.
+    </p>
+
+    <div class="details">
+      <div class="detail-box">📅<br>14 Febrero 2026</div>
+      <div class="detail-box">⏰<br>18:00</div>
+      <div class="detail-box">📍<br>Salón Principal</div>
     </div>
-    <script src="script.js"></script>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section>
+  <div class="container">
+    <h2 class="title">Galería</h2>
+
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+© 2026 Celebración Especial
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/aos @2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({duration:1000,once:true});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper @11/swiper-bundle.min.js"></script>
+<script>
+new Swiper('.swiper',{
+  loop:true,
+  slidesPerView:3,
+  spaceBetween:20,
+  navigation:{
+    nextEl:'.swiper-button-next',
+    prevEl:'.swiper-button-prev'
+  },
+  breakpoints:{
+    0:{slidesPerView:1},
+    768:{slidesPerView:2},
+    1024:{slidesPerView:3}
+  }
+});
+</script>
+
+<script>
+// Modal y formulario de asistencia
+const modal = document.getElementById('rsvpModal');
+const attendanceForm = document.getElementById('attendanceForm');
+const messageElement = document.getElementById('message'); // Renamed to match public/script.js
+
+// Mostrar modal después de 10 segundos
+setTimeout(() => {
+  modal.style.display = 'flex';
+  document.body.classList.add('modal-open');
+}, 10000);
+
+// Manejar envío del formulario
+attendanceForm.addEventListener('submit', async (event) => { // Added async
+  event.preventDefault(); // Prevent default form submission
+
+  const nombreFamilia = document.getElementById('nombreFamilia').value;
+  const confirmacionAsistencia = document.querySelector('input[name="confirmacionAsistencia"]:checked');
+
+  if (!nombreFamilia || !confirmacionAsistencia) {
+      messageElement.textContent = 'Por favor, complete todos los campos.';
+      messageElement.style.color = 'red';
+      return;
+  }
+
+  const formData = {
+      nombreFamilia: nombreFamilia,
+      confirmacionAsistencia: confirmacionAsistencia.value
+  };
+
+  try {
+      const response = await fetch(`/submit-data`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+          messageElement.textContent = result.message;
+          messageElement.style.color = 'green';
+          attendanceForm.reset(); // Clear the form
+      } else {
+          messageElement.textContent = `Error: ${result.message}`;
+          messageElement.style.color = 'red';
+      }
+  } catch (error) {
+      console.error('Error submitting form:', error);
+      messageElement.textContent = 'Error de conexión con el servidor.';
+      messageElement.style.color = 'red';
+  }
+
+  // Close modal after 2 seconds (or after successful/failed submission)
+  setTimeout(() => {
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+    messageElement.textContent = ''; // Clear message
+  }, 2000);
+});
+</script>
+
 </body>
 </html>
