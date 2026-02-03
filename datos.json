@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1770097212022,
+    "nombreFamilia": "sss",
+    "confirmacionAsistencia": "No",
+    "timestamp": "2026-02-03T05:40:12.022Z"
+  },
+  {
+    "id": 1770098046936,
+    "nombreFamilia": "rrgg",
+    "confirmacionAsistencia": "Si",
+    "timestamp": "2026-02-03T05:54:06.936Z"
+  },
+  {
+    "id": 1770099449141,
+    "nombreFamilia": "wws",
+    "confirmacionAsistencia": "Si",
+    "timestamp": "2026-02-03T06:17:29.141Z"
+  }
+]
