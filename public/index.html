@@ -127,17 +127,20 @@ new Swiper('.swiper',{
 // Modal y formulario de asistencia
 const modal = document.getElementById('rsvpModal');
 const attendanceForm = document.getElementById('attendanceForm');
-const messageElement = document.getElementById('message'); // Renamed to match public/script.js
+const messageElement = document.getElementById('message');
+const SUBMITTED_FLAG = 'hasSubmittedAttendance';
 
-// Mostrar modal después de 10 segundos
+// Mostrar modal después de 10 segundos, solo si no se ha enviado antes
 setTimeout(() => {
-  modal.style.display = 'flex';
-  document.body.classList.add('modal-open');
+  if (localStorage.getItem(SUBMITTED_FLAG) !== 'true') {
+    modal.style.display = 'flex';
+    document.body.classList.add('modal-open');
+  }
 }, 10000);
 
 // Manejar envío del formulario
-attendanceForm.addEventListener('submit', async (event) => { // Added async
-  event.preventDefault(); // Prevent default form submission
+attendanceForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
 
   const nombreFamilia = document.getElementById('nombreFamilia').value;
   const confirmacionAsistencia = document.querySelector('input[name="confirmacionAsistencia"]:checked');
@@ -167,7 +170,8 @@ attendanceForm.addEventListener('submit', async (event) => { // Added async
       if (response.ok) {
           messageElement.textContent = result.message;
           messageElement.style.color = 'green';
-          attendanceForm.reset(); // Clear the form
+          attendanceForm.reset();
+          localStorage.setItem(SUBMITTED_FLAG, 'true'); // Set flag on successful submission
       } else {
           messageElement.textContent = `Error: ${result.message}`;
           messageElement.style.color = 'red';
@@ -182,7 +186,7 @@ attendanceForm.addEventListener('submit', async (event) => { // Added async
   setTimeout(() => {
     modal.style.display = 'none';
     document.body.classList.remove('modal-open');
-    messageElement.textContent = ''; // Clear message
+    messageElement.textContent = '';
   }, 2000);
 });
 </script>
